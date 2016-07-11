@@ -13,6 +13,34 @@
 # if a Superhero has a special_tool their attack is tripled
 # if a Superhero is attacked and their hitpoints are less than 1, they are no longer alive
 # Superhero needs a grab_tool method, that sets the has_special_tool attribute to true.
+class Superhero
+  attr_reader :name, :special_tool
+  attr_writer :hitpoints, :alive
+
+  def initialize(name:, hitpoints: , attack:)
+    @name = name
+    @hitpoints = hitpoints.to_i
+    @attack = attack.to_i
+    @alive = true
+    @has_special_tool = false
+  end
+
+  def grab_tool
+    @has_special_tool = true
+  end
+
+  def Superhero.hit
+    if @has_special_tool == false
+      Superhero.hitpoints = Superhero.hitpoints - Superhero.attack
+    else
+      Superhero.hitpoints = Superhero.hitpoints - (Superhero.attack * 3)
+    end
+    if Superhero.hitpoints < 1
+      @alive = false
+    end
+end
+
+
 
 
 # Driver code - don't touch anything below this line.
@@ -31,13 +59,13 @@ else
   puts "F"
 end
 
-if superman.hitpoints == 45
+if superman.hitpoints = 45
   puts "PASS!"
 else
   puts "F"
 end
 
-if superman.alive == true
+if superman.alive = true
   puts "PASS!"
 else
   puts "F"
@@ -49,13 +77,13 @@ else
   puts "F"
 end
 
-if batman.hitpoints == 30
+if batman.hitpoints = 30
   puts "PASS!"
 else
   puts "F"
 end
 
-if batman.alive == true
+if batman.alive = true
   puts "PASS!"
 else
   puts "F"
@@ -141,4 +169,4 @@ else
   puts "• Superman is dead."
 end
 puts "• #{batman.name} has #{batman.hitpoints} hitpoints"
-puts 
+end
